@@ -20,4 +20,4 @@ An stock system created to facilitate the material control of my workspace.
 # 2. Pontos Importantes
 
 + Para melhor controle do banco de dados, antes de adicionar a imagem no material, renomeie o arquivo de imagem para o mesmo número de BMP referente ao material que está adicionando a imagem.
-+ Ex.: após tirar a foto da cadeira com bmp nº 389502, renomeie a foto para 389502.jpg e depois adicione ela no sistema
++ Ex.: após tirar a foto da cadeira com bmp nº 389502, renomeie a foto para 389502.jpg e depois adicione a mesma no sistema.
