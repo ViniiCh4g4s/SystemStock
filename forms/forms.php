@@ -36,7 +36,7 @@
     sleep(2);
     $bmp = $_POST['bmp'];
     $description = $_POST['description'];
-    $image = "";
+    $image = '';
     $obs = $_POST['obs'];
     $local = $_POST['local'];
 
@@ -55,10 +55,18 @@
     if(isset($_FILES['img'])){
       if(Painel::imageValid($_FILES['img'])) {
         $image = $_FILES['img'];
+        $imageExist = $image['name'];
       }else{
         $image = "";
         $data['success'] = false;
         $data['message'] = "Imagem inválida.";
+      }
+    }
+
+    if(isset($imageExist)){
+      if(Painel::imageExists($imageExist)){
+        $data['success'] = false;
+        $data['message'] = "Esta imagem já foi selecionada, selecione outra por favor!";
       }
     }
 
@@ -78,9 +86,6 @@
       $changes = "Adicionou o material com BMP: ".$bmp;
       $register = MySql::connect()->prepare("INSERT INTO `tb.historic` VALUES (null,?,?,?,?,?)");
       $register->execute(array($date,$_SESSION['username'],$_SESSION['name'],$ip,$changes));
-    }else{
-      $data['success'] = false;
-      $data['message'] = "Erro ao adicionar material.";
     }
 
   }else if(isset($_POST['type_action']) && $_POST['type_action'] == 'update-material'){
