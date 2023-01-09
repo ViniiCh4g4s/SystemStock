@@ -1,2 +1,2 @@
 # SystemStock
-Sistema de estoque setorial.
+Sistema de estoque com PHP / Bootstrap e JQuery.
