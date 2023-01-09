@@ -93,7 +93,8 @@
     $id = $_POST['id'];
     $bmp = $_POST['bmp'];
     $description = $_POST['description'];
-    $image = $_POST['imgCurrent'];
+    $image = '';
+    $imageCurrent = $_POST['imgCurrent'];
     $obs = $_POST['obs'];
     $local = $_POST['local'];
 
@@ -105,17 +106,26 @@
     }
 
     if(isset($_FILES['img'])){
-      if(Painel::imageValid($_FILES['img'])){
-        @unlink('../uploads/'.$image);
+      if(Painel::imageValid($_FILES['img'])) {
         $image = $_FILES['img'];
+        $imageExist = $image['name'];
       }else{
+        $image = "";
         $data['success'] = false;
         $data['message'] = "Imagem inválida.";
       }
     }
 
+    if(isset($imageExist)){
+      if(Painel::imageExists($imageExist)){
+        $data['success'] = false;
+        $data['message'] = "Esta imagem já foi selecionada, selecione outra por favor!";
+      }
+    }
+
     if ($data['success']) {
       if(is_array($image)) {
+        @unlink('../uploads/'.$imageCurrent);
         $image = Painel::uploadFile($image);
       }
 
@@ -130,9 +140,6 @@
       $changes = "Editou o material com BMP: ".$bmp;
       $register = MySql::connect()->prepare("INSERT INTO `tb.historic` VALUES (null,?,?,?,?,?)");
       $register->execute(array($date,$_SESSION['username'],$_SESSION['name'],$ip,$changes));
-    }else{
-      $data['success'] = false;
-      $data['message'] = "Erro ao atualizar material.";
     }
 
 
