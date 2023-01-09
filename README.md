@@ -1,6 +1,3 @@
-# SystemStock
-An stock system created to facilitate the material control of my workspace.
-
 # 1.Primeiros Passos
 
 ### Banco de Dados e Configuração do Site
