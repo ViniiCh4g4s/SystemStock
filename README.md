@@ -1,2 +1,2 @@
 # SystemStock
-Sistema de estoque com PHP / Bootstrap e JQuery.
+An stock system created to facilitate the material control of my work.
