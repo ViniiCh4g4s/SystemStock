@@ -184,6 +184,15 @@
 				return false;
 		}
 
+		public static function imageExists($image){
+			$sql = MySql::connect()->prepare("SELECT `id` FROM `tb.materials` WHERE `img`=?");
+			$sql->execute(array($image));
+			if($sql->rowCount() == 1)
+				return true;
+			else
+				return false;
+		}
+
 	/* ----------- Local ----------- */
 
 		public static function selectLocal($table,$start = null,$end = null){
