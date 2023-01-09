@@ -1,7 +1,7 @@
 <?php
 	$pageCurrent = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-	$limit = isset($_GET['selectedItensperPage']) ? $_GET['selectedItensperPage'] : 200;
-	$perPage = isset($_GET['selectedItensperPage']) ? $_GET['selectedItensperPage'] : 200;
+	$limit = isset($_GET['selectedItensperPage']) ? $_GET['selectedItensperPage'] : 100;
+	$perPage = isset($_GET['selectedItensperPage']) ? $_GET['selectedItensperPage'] : 100;
 
   	$perLocal = isset($_GET['selectedItensperLocal']) ? $_GET['selectedItensperLocal'] : false;
 
@@ -25,7 +25,7 @@
   		<select class="form-control" name='selectedItensperPage' id="selectedItensperPage">
 					<option disabled selected>Limite por página</option>
 					<?php 
-						foreach([100,500,10000] as $perPage) {
+						foreach([500,1000,5000,10000,100000] as $perPage) {
 					?>
 					<option <?php if(isset($limit) && $limit == $perPage) echo "selected" ?> value="<?= $perPage; ?>"><?= $perPage; ?></option>
 					<?php } ?>
