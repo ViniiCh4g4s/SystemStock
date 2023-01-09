@@ -1,0 +1,77 @@
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes pulse {
+  50% {
+    background: white;
+  }
+}
+@keyframes pulse {
+  50% {
+    background: white;
+  }
+}
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #333333;
+}
+
+.loading {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border: 0.25rem solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+}
+
+.toast {  
+  background-color: #5a5a5a;
+  border-radius: 4px;
+  color: #ffffff;
+  display: inline-block;  
+  padding: 12px 24px;
+  font-family: 'Arial';
+  font-size: 12px;
+  position: fixed;
+  margin-bottom: 12px;
+  left: 12px;
+  bottom: -80px;
+  animation: 20s enterScene;
+  animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@keyframes enterScene {
+  0% {
+    bottom: -80px;
+  }
+  5% {
+    bottom: 0px;
+  }
+  95% {
+    bottom: 0px;
+  }
+  100% {
+    bottom: -80px;
+  }
+}
